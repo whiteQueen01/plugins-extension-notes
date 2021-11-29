@@ -1,0 +1,77 @@
+{
+	"id": "wq_notes",
+	"name": "wq_notes",
+	"description": "vue和js函数注释和文件头部注释",
+	"displayName": "annotation-注释插件",
+	"version": "2.1.0",
+	"publisher": "white_queen",
+	"engines": {
+		"HBuilderX": "^2.7.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./extension",
+	"contributes": {
+		"configuration": {
+			"title": "wq-notes",
+			"properties": {
+				"isLastEdit": {
+					"type": "boolean",
+					"default": false,
+					"description": "取消最后修改的时间和作者"
+				},
+				"Author": {
+					"type": "string",
+					"default": "white_queen",
+					"description": "配置注释作者"
+				}			
+			}
+		},
+		"commands": [{
+				"command": "extension.insert",
+				"title": "首行注释信息"
+			},
+			{
+				"command": "extension.functionNotes",
+				"title": "函数注释"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"title": "文件头部注释",
+					"group": "assist",
+					"when": "editorTextFocus",
+					"command": "extension.insert"
+				},
+				{
+					"title": "函数注释",
+					"group": "assist",
+					"when": "editorTextFocus",
+					"command": "extension.functionNotes"
+				}
+			]
+		},
+		"keybindings":[
+		    {
+		        "command":"extension.insert",   
+		        "key":"Ctrl+Alt+I",                   
+		        "when":"",                               
+		        "macosx":"command+Ctrl+I"        
+		    },
+			{
+			    "command":"extension.functionNotes",   
+			    "key":"Ctrl+Alt+T",                   
+			    "when":"",                               
+			    "macosx":"command+Ctrl+T"        
+			}
+		]
+	},
+	"extensionDependencies": [
+		"plugin-manager"
+	],
+	"dependencies": {
+		"dayjs": "^1.10.6"
+	}
+}
